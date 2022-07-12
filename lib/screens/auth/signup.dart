@@ -20,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Text(
-            'G.H.U.L.K.',
+            'G.HULK',
             style: TextStyle(
               fontFamily: 'Pacifico',
               fontSize: 40.0,
@@ -29,7 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
           Text(
-            'Login',
+            'Sign Up',
             style: TextStyle(
               fontFamily: 'Source Sans Pro',
               color: Colors.teal.shade100,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import 'welcome.dart';
+import 'mt.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -13,7 +16,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Two List View One Screen"),
+        title: const Text("G.HULK"),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Container(
+                width: 50,
+                height: 50,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white, //remove this when you add image.
+                ),
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage('images/Default_pfp.jpg'),
+                )),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: SizedBox(
@@ -29,14 +47,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         options: CarouselOptions(),
                         items: [
                           //1st Image of Slider
-                          Container(
-                            margin: const EdgeInsets.all(10.0),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              image: const DecorationImage(
-                                image: NetworkImage(
-                                    'https://picsum.photos/250?image=9'),
-                                fit: BoxFit.cover,
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const ShowInfo()));
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                                image: const DecorationImage(
+                                  image: NetworkImage(
+                                      'https://picsum.photos/250?image=9'),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
