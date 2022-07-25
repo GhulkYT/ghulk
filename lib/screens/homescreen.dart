@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
-import 'welcome.dart';
+import 'profsrn.dart';
 import 'mt.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,8 +26,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   shape: BoxShape.circle,
                   color: Colors.white, //remove this when you add image.
                 ),
-                child: const CircleAvatar(
-                  backgroundImage: AssetImage('images/Default_pfp.jpg'),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProfScreen()));
+                  },
+                  child: const CircleAvatar(
+                    backgroundImage: AssetImage('images/Default_pfp.jpg'),
+                  ),
                 )),
           )
         ],
@@ -144,7 +151,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: <Widget>[
                   Container(
                     width: 160.0,
-                    color: Colors.red,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            "https://images.fandango.com/ImageRenderer/200/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/227045/Nope_2022b.jpg"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
                   ),
                   Container(
                     width: 160.0,

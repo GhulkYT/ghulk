@@ -40,13 +40,33 @@ class _ShowInfoState extends State<ShowInfo> {
             color: Colors.red,
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Text('Info'),
-                    Text('Critic'),
-                  ],
+                Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      TextButton(
+                        child: Text(
+                          "Info",
+                        ),
+                        onPressed: () {
+                          setState(
+                            () {},
+                          );
+                        },
+                      ),
+                      TextButton(
+                        child: Text(
+                          "Critic",
+                        ),
+                        onPressed: () {
+                          setState(
+                            () {},
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

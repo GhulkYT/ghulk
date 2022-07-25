@@ -1,9 +1,14 @@
-// ignore_for_file: prefer_const_constructors
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ghulk/screens/welcome.dart';
+import 'package:ghulk/services/auth.dart';
 
-void main() {
+import 'screens/homescreen.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -18,7 +23,30 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Welcome(),
+      home: AuthWrapper(),
     );
+  }
+}
+
+class AuthWrapper extends StatefulWidget {
+  AuthWrapper({Key? key}) : super(key: key);
+  @override
+  State<AuthWrapper> createState() => _AuthWrapperState();
+}
+
+class _AuthWrapperState extends State<AuthWrapper> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: AuthenticationController().authStateChanges,
+        builder: ((context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasData) {
+            return HomeScreen();
+          }
+          return Welcome();
+        }));
   }
 }
