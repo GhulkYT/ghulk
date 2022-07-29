@@ -3,13 +3,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ghulk/screens/welcome.dart';
 import 'package:ghulk/services/auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'api/movie_app.dart';
 import 'screens/homescreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  //runApp(const MyApp());
+  runApp(const ProviderScope(child: MovieApp()));
+
 }
 
 class MyApp extends StatefulWidget {

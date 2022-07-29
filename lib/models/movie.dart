@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Movie {
   String title;
   String posterPath;
